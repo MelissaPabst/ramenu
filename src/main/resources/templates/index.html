@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title th:text="${title}">Default Title</title>
-</head>
+<head th:replace="fragments :: head"></head>
+
+
 <body>
-    <h1 th:text="${title}"></h1>
+    <h1 th:text="${title}">Default Title</h1>
 
 
-    <input type="submit" value="Log In" />
-    <input type="submit" value="Create Account" />
+    <form action = "ramenu/login" method = "get" style = "max-width:600px;">
+        <input type="submit" value="Log In" />
+    </form>
+    <form action = "ramenu/signup" method = "get" style = "max-width:600px;">
+        <input type="submit" value="Create Account" />
+    </form>
+
+
+
+
 </body>
 </html>
