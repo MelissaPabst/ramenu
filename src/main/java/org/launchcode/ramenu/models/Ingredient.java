@@ -1,5 +1,6 @@
 package org.launchcode.ramenu.models;
 
+
 public class Ingredient {
 
     private String name;
@@ -10,7 +11,7 @@ public class Ingredient {
 
     private int ingredientId;
 
-    private
+
     private Ingredient(String name, String type, String description, int ingredientId) {
         this();
         this.name = name;
