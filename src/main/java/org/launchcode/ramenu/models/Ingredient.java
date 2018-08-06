@@ -1,8 +1,11 @@
 package org.launchcode.ramenu.models;
-import javax.persistence.*;
 
 
+@Entity
 public class Ingredient {
+
+    @Id
+    private Integer id;
 
     private String name;
 
@@ -15,17 +18,15 @@ public class Ingredient {
 
     private Ingredient(String name, String type, String description, int ingredientId) {
         this();
+        this.id = id;
         this.name = name;
         this.type = type;
         this.description = description;
         this.ingredientId = ingredientId;
-
     }
 
-    //default constructor
-    public Ingredient() {
-
-    }
+    //default no-arg constructor
+    public Ingredient() { }
 
     public String getName() {
         return name;
