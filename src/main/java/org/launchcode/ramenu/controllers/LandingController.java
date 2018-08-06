@@ -32,7 +32,7 @@ public class LandingController {
     @RequestMapping(value = "order")
     public String displayOrderForm(Model model){
         model.addAttribute("title", "Order | Ramenu");
-        return "order/broth";
+        return "order/ingredients";
     }
 
 }

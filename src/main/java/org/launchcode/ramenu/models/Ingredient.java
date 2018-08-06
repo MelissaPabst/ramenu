@@ -1,4 +1,5 @@
 package org.launchcode.ramenu.models;
+import javax.persistence.*;
 
 
 public class Ingredient {
