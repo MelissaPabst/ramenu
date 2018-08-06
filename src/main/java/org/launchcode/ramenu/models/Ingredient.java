@@ -1,5 +1,8 @@
 package org.launchcode.ramenu.models;
 
+import javax.persistence.*;
+import java.text.DecimalFormat;
+import java.util.Currency;
 
 @Entity
 public class Ingredient {
@@ -11,16 +14,19 @@ public class Ingredient {
 
     private String type;
 
+    private Double price;
+
     private String description;
 
-    private int ingredientId;
+    private Integer ingredientId;
 
 
-    private Ingredient(String name, String type, String description, int ingredientId) {
+    private Ingredient(String name, String type, Double price, String description, Integer ingredientId) {
         this();
         this.id = id;
         this.name = name;
         this.type = type;
+        this.price = price;
         this.description = description;
         this.ingredientId = ingredientId;
     }
@@ -42,6 +48,10 @@ public class Ingredient {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Double getPrice() {
+        return price;
     }
 
     public String getDescription() {
