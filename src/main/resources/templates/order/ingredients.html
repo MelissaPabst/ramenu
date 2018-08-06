@@ -18,7 +18,7 @@
     <tr th:each="ingredient : ${ingredients}">
         <td th:text="${ingredient.name}"></td>
         <td th:text="${ingredient.description}"></td>
-        <td th:text="${ingredient.price}"></td>
+        <td th:text="${'$'+#numbers.formatDecimal(ingredient.price, 0, 'COMMA', 2, 'POINT')}"></td>
     </tr>
 
 
