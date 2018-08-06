@@ -1,8 +1,6 @@
 package org.launchcode.ramenu.models;
 
 import javax.persistence.*;
-import java.text.DecimalFormat;
-import java.util.Currency;
 
 @Entity
 public class Ingredient {

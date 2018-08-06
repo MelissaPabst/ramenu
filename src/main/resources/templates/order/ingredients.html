@@ -5,7 +5,7 @@
 <body>
 
 <h1 th:text="${title}">Default Title</h1>
-<h1>test ingredient</h1>
+
 
 <table>
 
@@ -20,6 +20,13 @@
         <td th:text="${ingredient.description}"></td>
         <td th:text="${'$'+#numbers.formatDecimal(ingredient.price, 0, 'COMMA', 2, 'POINT')}"></td>
     </tr>
+
+    <!--ul>
+        <li th:each="ingredient: ${ingredients}">
+            <input type="radio" th:field="*{type}" th:value="${ingredient}" />
+            <label th:for="{#ids.prev('type')}" th:text="#{${'ingredient'}}">TEST</label>
+        </li>
+    </ul-->
 
 
 </table>
