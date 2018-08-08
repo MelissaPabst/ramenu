@@ -30,5 +30,5 @@ I'd like to do some JavaScript stuff to make the menu more interactive.
 ### Project Tracker
 [Ramenu Project Tracker](https://trello.com/b/UYEZIezu/ramenu)
 
-###License
+### License
 This project is licensed under an [MIT License](https://github.com/MelissaPabst/ramenu/blob/master/LICENSE.txt)
