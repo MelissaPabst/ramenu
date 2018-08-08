@@ -23,45 +23,47 @@
 
 </table>
 
-<form>
+
 
 <h1>Step 1: Choose Your Broth</h1>
 
 
-
+<form>
     <div th:each="ingredient : ${ingredients}" th:if="${ingredient.type == 'broth'}" class="checkbox">
         <input type="radio" name="ingredientIds" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
         <label th:for="${ingredient.id}" th:text="${ingredient.name + '  ' + ingredient.description + '   ' + ingredient.price}"></label>
         <br />
     </div>
-
+</form>
 
 
 
 <h1>Step 2: Choose Your Noodle</h1>
 
 
-
+<form>
     <div th:each="ingredient : ${ingredients}" th:if="${ingredient.type == 'noodle'}" class="checkbox">
         <input type="radio" name="ingredientIds" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
         <label th:for="${ingredient.id}" th:text="${ingredient.name + '  ' + ingredient.description + '   ' + ingredient.price}"></label>
         <br />
     </div>
+</form>
 
 
 
 <h1>Step 3: Choose Your Toppings</h1>
 
 
-
+<form>
     <div th:each="ingredient : ${ingredients}" th:if="${ingredient.type == 'topping'}" class="checkbox">
         <input type="checkbox" name="ingredientIds" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
         <label th:for="${ingredient.id}" th:text="${ingredient.name + '  ' + ingredient.description + '   '  +'$'+#numbers.formatDecimal(ingredient.price, 0, 'COMMA', 2, 'POINT')}"></label>
         <br />
     </div>
-
-
 </form>
+
+
+
 
 
 
