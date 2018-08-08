@@ -21,15 +21,42 @@
         <td th:text="${'$'+#numbers.formatDecimal(ingredient.price, 0, 'COMMA', 2, 'POINT')}"></td>
     </tr>
 
-    <!--ul>
-        <li th:each="ingredient: ${ingredients}">
-            <input type="radio" th:field="*{type}" th:value="${ingredient}" />
-            <label th:for="{#ids.prev('type')}" th:text="#{${'ingredient'}}">TEST</label>
-        </li>
-    </ul-->
-
-
 </table>
+
+<form method="post">
+
+    <div th:each="ingredient : ${ingredients}" th:if="${ingredient.type == 'broth'}" class="checkbox">
+        <input type="radio" name="ingredientIds" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
+        <label th:for="${ingredient.id}" th:text="${ingredient.name + '  ' + ingredient.description + '   ' + ingredient.price}"></label>
+        <br />
+    </div>
+
+    <!--input type="submit" value="Cheese" /-->
+</form>
+
+<form method="post">
+
+    <div th:each="ingredient : ${ingredients}" th:if="${ingredient.type == 'noodle'}" class="checkbox">
+        <input type="radio" name="ingredientIds" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
+        <label th:for="${ingredient.id}" th:text="${ingredient.name + '  ' + ingredient.description + '   ' + ingredient.price}"></label>
+        <br />
+    </div>
+
+    <!--input type="submit" value="Cheese" /-->
+</form>
+
+<form method="post">
+
+    <div th:each="ingredient : ${ingredients}" th:if="${ingredient.type == 'topping'}" class="checkbox">
+        <input type="checkbox" name="ingredientIds" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
+        <label th:for="${ingredient.id}" th:text="${ingredient.name + '  ' + ingredient.description + '   ' + ingredient.price}"></label>
+        <br />
+    </div>
+
+    <!--input type="submit" value="Cheese" /-->
+</form>
+
+
 
 </body>
 </html>

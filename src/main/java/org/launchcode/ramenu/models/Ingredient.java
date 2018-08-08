@@ -19,7 +19,7 @@ public class Ingredient {
     private Integer ingredientId;
 
 
-    private Ingredient(String name, String type, Double price, String description, Integer ingredientId) {
+    private Ingredient(Integer id, String name, String type, Double price, String description, Integer ingredientId) {
         this();
         this.id = id;
         this.name = name;
@@ -31,6 +31,14 @@ public class Ingredient {
 
     //default no-arg constructor
     public Ingredient() { }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -50,6 +58,10 @@ public class Ingredient {
 
     public Double getPrice() {
         return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public String getDescription() {
