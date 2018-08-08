@@ -8,19 +8,27 @@ I decided to make this project because I have had a hard time ordering ramen; th
 ### Features
 1. User Sign up: User will be able to create a profile for themselves, delivery address, and favorite orders.
 2. User Login: User will be able to login after creating a profile. Passwords will be hashed and salted.
-3. CRUD: Users will be able to create an order (but not an ingredient), add ingredients to an order, read an order, update/remove ingredients from an order, and delete an order.
+3. Users will be able to create an order (but not an ingredient), add ingredients to an order, read an order, update/remove ingredients from an order, and delete an order.
 4. View order history: User will be able to view order history.
 
 ### Technologies
 Java
+
 Spring
+
 MySQL
+
 Thymeleaf
-React/Javascript
+
+Javascript
 
 ### What I'll Have to Learn
 I have no idea how to structure this in a DB.
-React: I'll have to learn how to use this in conjunction with Spring. I found a tutorial.
+
+I'd like to do some JavaScript stuff to make the menu more interactive.
 
 ### Project Tracker
 [Ramenu Project Tracker](https://trello.com/b/UYEZIezu/ramenu)
+
+###License
+This project is licensed under an [MIT License](https://github.com/MelissaPabst/ramenu/blob/master/LICENSE.txt)
