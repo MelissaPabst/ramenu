@@ -7,22 +7,6 @@
 <h1 th:text="${title}">Default Title</h1>
 
 
-<table>
-
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Price</th>
-    </tr>
-
-    <tr th:each="ingredient : ${ingredients}">
-        <td th:text="${ingredient.name}"></td>
-        <td th:text="${ingredient.description}"></td>
-        <td th:text="${'$'+#numbers.formatDecimal(ingredient.price, 0, 'COMMA', 2, 'POINT')}"></td>
-    </tr>
-
-</table>
-
 
 <form>
 <h1>Step 1: Choose Your Broth</h1>
