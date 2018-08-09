@@ -22,11 +22,6 @@ Thymeleaf
 
 Javascript
 
-### What I'll Have to Learn
-I have no idea how to structure this in a DB.
-
-I'd like to do some JavaScript stuff to make the menu more interactive.
-
 ### Project Tracker
 [Ramenu Project Tracker](https://trello.com/b/UYEZIezu/ramenu)
 
