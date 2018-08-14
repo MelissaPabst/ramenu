@@ -6,18 +6,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Order {
+public class RamenOrder {
 
     @Id
     @GeneratedValue
     private int id;
 
-
     private String details;
 
-    private float total;
+    private Float total;
 
-    public Order() {
+    public RamenOrder() {
+    }
+
+    public  RamenOrder(String details, Float total) {
+        this.details = details;
+        this.total = total;
+
     }
 
     public int getId() {
@@ -33,19 +38,14 @@ public class Order {
         this.details = details;
     }
 
-    public float getTotal() {
+    public Float getTotal() {
         return total;
     }
 
-    public void setTotal(float total) {
+    public void setTotal(Float total) {
         this.total = total;
     }
 
-    public  Order(String details, float total) {
-        this.details = details;
-        this.total = total;
-
-    }
 
 
 

@@ -2,6 +2,7 @@ package org.launchcode.ramenu.models;
 
 import javax.persistence.*;
 
+
 @Entity
 public class Ingredient {
 
@@ -17,6 +18,10 @@ public class Ingredient {
     private String description;
 
     private Integer ingredientId;
+
+//    //many ingredients for one order
+//    @ManyToOne
+//    private Order order;
 
 
     private Ingredient(Integer id, String name, String type, Double price, String description, Integer ingredientId) {

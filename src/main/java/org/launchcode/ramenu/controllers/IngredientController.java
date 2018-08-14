@@ -16,7 +16,6 @@ public class IngredientController {
 
     @RequestMapping(value = "")
     public String index(Model model) {
-        //System.out.println(ingredientDao.findOne(1));
 
         model.addAttribute("title", "Select Your Ingredients");
         model.addAttribute("ingredients", ingredientDao.findAll());
