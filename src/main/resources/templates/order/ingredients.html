@@ -8,46 +8,49 @@
 
 
 
-<form>
-<h1>Step 1: Choose Your Broth</h1>
+<form action="#" method="post" class="form" id="ramenForm">
+<h2>Step 1: Choose Your Broth</h2>
 
 
-<form>
+<p>
     <div th:each="ingredient : ${ingredients}" th:if="${ingredient.type == 'broth'}" class="checkbox">
-        <input type="radio" name="ingredientIds" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
+        <input type="radio" name="broth" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
         <label th:for="${ingredient.id}" th:text="${ingredient.name + ' ' + ingredient.description + ' '  +'$'+#numbers.formatDecimal(ingredient.price, 0, 'COMMA', 2, 'POINT')}"></label>
+        <input type = "hidden" name="broth_total" value="0.00" />
         <br />
     </div>
-</form>
+</p>
 
 
 
-<h1>Step 2: Choose Your Noodle</h1>
+<h2>Step 2: Choose Your Noodle</h2>
 
 
-<form>
+<p>
     <div th:each="ingredient : ${ingredients}" th:if="${ingredient.type == 'noodle'}" class="checkbox">
-        <input type="radio" name="ingredientIds" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
+        <input type="radio" name="noodle" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
         <label th:for="${ingredient.id}" th:text="${ingredient.name + ' ' + ingredient.description + ' '  +'$'+#numbers.formatDecimal(ingredient.price, 0, 'COMMA', 2, 'POINT')}"></label>
+        <input type = "hidden" name="noodle_total" value="0.00" />
         <br />
     </div>
 
-</form>
+</p>
 
 
 
-<h1>Step 3: Choose Your Toppings</h1>
+<h2>Step 3: Choose Your Toppings</h2>
 
 
-<form>
-    <div th:each="ingredient : ${ingredients}" th:if="${ingredient.type == 'topping'}" class="checkbox">
-        <input type="checkbox" name="ingredientIds" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
+<p>
+    <div th:each="ingredient : ${ingredients}" th:if="${ingredient.type == 'topping'}" class="checkbox" id="ramen_toppings">
+        <input type="checkbox" name="toppings" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
         <label th:for="${ingredient.id}" th:text="${ingredient.name + ' ' + ingredient.description + ' '  +'$'+#numbers.formatDecimal(ingredient.price, 0, 'COMMA', 2, 'POINT')}"></label>
+        <input type = "hidden" name="toppings_total" value="0.00" />
         <br />
     </div>
 
-</form>
-
+</p>
+    <p><label>Total: $ <input type="text" name = "total" class="num" value="0.00" readonly="readyonly" /></label></p>
     <input type="submit" value="Submit Order" />
 
 </form>
@@ -56,6 +59,6 @@
 
 
 
-
+<script type="text/javascript" src="/src/main/resources/static/js/runningtotal.js"></script>
 </body>
 </html>
