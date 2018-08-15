@@ -12,15 +12,21 @@ public class RamenOrder {
     @GeneratedValue
     private int id;
 
-    private String details;
+    private String broth;
+
+    private String noodle;
+
+    private String topping;
 
     private Float total;
 
     public RamenOrder() {
     }
 
-    public  RamenOrder(String details, Float total) {
-        this.details = details;
+    public  RamenOrder(String broth, String noodle, String topping, Float total) {
+        this.broth = broth;
+        this.noodle = noodle;
+        this.topping = topping;
         this.total = total;
 
     }
@@ -29,14 +35,30 @@ public class RamenOrder {
         return id;
     }
 
-    public String getDetails() {
-
-        return details;
+    public String getBroth() {
+        return broth;
     }
 
-    public void setDetails(String details) {
-        this.details = details;
+    public void setBroth(String broth) {
+        this.broth = broth;
     }
+
+    public String getNoodle() {
+        return noodle;
+    }
+
+    public void setNoodle(String noodle) {
+        this.noodle = noodle;
+    }
+
+    public String getTopping() {
+        return topping;
+    }
+
+    public void setTopping(String topping) {
+        this.topping = topping;
+    }
+
 
     public Float getTotal() {
         return total;
