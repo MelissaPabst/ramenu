@@ -2,7 +2,6 @@ package org.launchcode.ramenu.models;
 
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,21 +11,21 @@ public class RamenOrder {
     @GeneratedValue
     private int id;
 
-    private String broth;
-
-    private String noodle;
-
-    private String topping;
+    private String ingredient;
 
     private Float total;
+
+
+    @ManyToMany
+    List<Ingredient> ingredients;
+
+
 
     public RamenOrder() {
     }
 
-    public  RamenOrder(String broth, String noodle, String topping, Float total) {
-        this.broth = broth;
-        this.noodle = noodle;
-        this.topping = topping;
+    public  RamenOrder(String ingredient, Float total) {
+        this.ingredient = ingredient;
         this.total = total;
 
     }
@@ -35,30 +34,21 @@ public class RamenOrder {
         return id;
     }
 
-    public String getBroth() {
-        return broth;
+    public String getIngredient() {
+        return ingredient;
     }
 
-    public void setBroth(String broth) {
-        this.broth = broth;
+    public void setIngredient(String ingredient) {
+        this.ingredient = ingredient;
     }
 
-    public String getNoodle() {
-        return noodle;
+    public List<Ingredient> getIngredients() {
+        return ingredients;
     }
 
-    public void setNoodle(String noodle) {
-        this.noodle = noodle;
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
-
-    public String getTopping() {
-        return topping;
-    }
-
-    public void setTopping(String topping) {
-        this.topping = topping;
-    }
-
 
     public Float getTotal() {
         return total;

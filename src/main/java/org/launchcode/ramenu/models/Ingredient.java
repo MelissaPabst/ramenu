@@ -1,6 +1,7 @@
 package org.launchcode.ramenu.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -9,29 +10,29 @@ public class Ingredient {
     @Id
     private Integer id;
 
-    private String name;
-
     private String type;
 
-    private Double price;
+    private String name;
 
     private String description;
 
+    private Double price;
+
     private Integer ingredientId;
 
-//    //many ingredients for one order
-//    @ManyToOne
-//    private Order order;
+//    private Integer ramenOrderId
+
+    @ManyToMany(mappedBy = "ingredients")
+    private List<RamenOrder> ramenOrders;
 
 
     private Ingredient(Integer id, String name, String type, Double price, String description, Integer ingredientId) {
         this();
         this.id = id;
-        this.name = name;
         this.type = type;
-        this.price = price;
+        this.name = name;
         this.description = description;
-        this.ingredientId = ingredientId;
+        this.price = price;
     }
 
     //default no-arg constructor
@@ -77,11 +78,5 @@ public class Ingredient {
         this.description = description;
     }
 
-    public int getIngredientId() {
-        return ingredientId;
-    }
 
-    public void setIngredientId(int ingredientId) {
-        this.ingredientId = ingredientId;
-    }
 }
