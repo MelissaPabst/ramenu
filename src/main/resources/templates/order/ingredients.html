@@ -14,9 +14,9 @@
 
 <p>
     <div th:each="ingredient : ${ingredients}" th:if="${ingredient.type == 'broth'}" class="checkbox">
-        <input type="radio" name="broth" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
+        <input type="radio" name="brothIds" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
         <label th:for="${ingredient.id}" th:text="${ingredient.name + ' ' + ingredient.description + ' '  +'$'+#numbers.formatDecimal(ingredient.price, 0, 'COMMA', 2, 'POINT')}"></label>
-        <input type = "hidden" name="broth_total" value="0.00" />
+        <!--<input type = "hidden" name="broth_total" value="0.00" />-->
         <br />
     </div>
 </p>
@@ -28,9 +28,9 @@
 
 <p>
     <div th:each="ingredient : ${ingredients}" th:if="${ingredient.type == 'noodle'}" class="checkbox">
-        <input type="radio" name="noodle" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
+        <input type="radio" name="noodleIds" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
         <label th:for="${ingredient.id}" th:text="${ingredient.name + ' ' + ingredient.description + ' '  +'$'+#numbers.formatDecimal(ingredient.price, 0, 'COMMA', 2, 'POINT')}"></label>
-        <input type = "hidden" name="noodle_total" value="0.00" />
+        <!--<input type = "hidden" name="noodle_total" value="0.00" />-->
         <br />
     </div>
 
@@ -43,9 +43,9 @@
 
 <p>
     <div th:each="ingredient : ${ingredients}" th:if="${ingredient.type == 'topping'}" class="checkbox" id="ramen_toppings">
-        <input type="checkbox" name="toppings" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
+        <input type="checkbox" name="toppingIds" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
         <label th:for="${ingredient.id}" th:text="${ingredient.name + ' ' + ingredient.description + ' '  +'$'+#numbers.formatDecimal(ingredient.price, 0, 'COMMA', 2, 'POINT')}"></label>
-        <input type = "hidden" name="toppings_total" value="0.00" />
+        <!--<input type = "hidden" name="toppings_total" value="0.00" />-->
         <br />
     </div>
 

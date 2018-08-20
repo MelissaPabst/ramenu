@@ -32,14 +32,18 @@ public class IngredientController {
 
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
-    public String processOrderForm(@RequestParam int[] ingredientIds, RamenOrder newRamenOrder) {
-
-        for (int ingredientId : ingredientIds) {
-            ramenOrderDao.save(newRamenOrder);
-        }
-
-        return "redirect:";
-    }
+//    @RequestMapping(value = "", method = RequestMethod.POST)
+//    public String processOrderForm(@RequestParam int[] brothIds, @RequestParam int[] noodleIds, @RequestParam int[] toppingIds, RamenOrder newRamenOrder) {
+//
+//        RamenOrder newRamen = new RamenOrder();
+//
+//        for (int brothId : brothIds, int noodleId: noodleIds, int toppingId : toppingIds) {
+//            ramenOrderDao.save(newRamenOrder);
+//
+//        }
+//
+//        return "redirect:";
+//
+//    }
 
 }
