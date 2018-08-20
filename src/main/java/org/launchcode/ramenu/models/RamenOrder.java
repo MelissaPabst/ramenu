@@ -15,7 +15,7 @@ public class RamenOrder {
 
     private Float total;
 
-
+    //used to hold all items in the ramenOrder
     @ManyToMany
     List<Ingredient> ingredients;
 

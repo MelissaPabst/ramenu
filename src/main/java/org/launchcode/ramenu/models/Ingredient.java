@@ -22,6 +22,9 @@ public class Ingredient {
 
 //    private Integer ramenOrderId
 
+
+    // configures other side of MTM relationship with ramenOrder
+    // represents the list of ramenOrder objects that a given ingredient is contained in
     @ManyToMany(mappedBy = "ingredients")
     private List<RamenOrder> ramenOrders;
 

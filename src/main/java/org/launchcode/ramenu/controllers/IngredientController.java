@@ -33,11 +33,15 @@ public class IngredientController {
     }
 
 //    @RequestMapping(value = "", method = RequestMethod.POST)
-//    public String processOrderForm(@RequestParam int[] brothIds, @RequestParam int[] noodleIds, @RequestParam int[] toppingIds, RamenOrder newRamenOrder) {
+//    public String processOrderForm(@RequestParam int[] brothIds,
+//                                   @RequestParam int[] noodleIds,
+//                                   @RequestParam int[] toppingIds,
+//                                   @RequestParam float[] total,
+//                                   RamenOrder newRamenOrder) {
 //
 //        RamenOrder newRamen = new RamenOrder();
 //
-//        for (int brothId : brothIds, int noodleId: noodleIds, int toppingId : toppingIds) {
+//        for (int brothId : brothIds, int noodleId: noodleIds, int toppingId : toppingIds, float total) {
 //            ramenOrderDao.save(newRamenOrder);
 //
 //        }
