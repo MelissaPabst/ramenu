@@ -18,7 +18,7 @@ public class Ingredient {
 
     private Double price;
 
-    private Integer ingredientId;
+//    private Integer ingredientId;
 
 //    private Integer ramenOrderId
 
@@ -29,7 +29,7 @@ public class Ingredient {
     private List<RamenOrder> ramenOrders;
 
 
-    private Ingredient(Integer id, String name, String type, Double price, String description, Integer ingredientId) {
+    private Ingredient(Integer id, String name, String type, Double price, String description) {
         this();
         this.id = id;
         this.type = type;

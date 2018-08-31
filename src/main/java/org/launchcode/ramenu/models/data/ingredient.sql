@@ -16,8 +16,7 @@ CREATE TABLE IF NOT EXISTS `ingredient` (
   `type` varchar(30) NOT NULL,
   `name` varchar(30) NOT NULL,
   `description` varchar(30) NOT NULL,
-  `price` decimal(19,2) NOT NULL,
-  `ingredientId` int(11) NOT NULL
+  `price` decimal(19,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

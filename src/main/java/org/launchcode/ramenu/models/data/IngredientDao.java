@@ -13,4 +13,6 @@ import java.util.List;
 public interface IngredientDao extends CrudRepository<Ingredient, Integer> {
 
     List<Ingredient> findAll();
+//    add findbyId
+//    List<Ingredient> findById();
 }

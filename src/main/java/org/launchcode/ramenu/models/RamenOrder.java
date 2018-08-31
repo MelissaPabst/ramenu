@@ -11,35 +11,24 @@ public class RamenOrder {
     @GeneratedValue
     private int id;
 
-    private String ingredient;
-
     private Float total;
 
     //used to hold all items in the ramenOrder
     @ManyToMany
     List<Ingredient> ingredients;
 
+    public RamenOrder() { }
 
-
-    public RamenOrder() {
-    }
-
-    public  RamenOrder(String ingredient, Float total) {
-        this.ingredient = ingredient;
+    public  RamenOrder(Float total) {
         this.total = total;
-
     }
+
+//    public void addItem(Ingredient item){
+//        ingredients.add(item);
+//    }
 
     public int getId() {
         return id;
-    }
-
-    public String getIngredient() {
-        return ingredient;
-    }
-
-    public void setIngredient(String ingredient) {
-        this.ingredient = ingredient;
     }
 
     public List<Ingredient> getIngredients() {
@@ -57,9 +46,5 @@ public class RamenOrder {
     public void setTotal(Float total) {
         this.total = total;
     }
-
-
-
-
 
 }
