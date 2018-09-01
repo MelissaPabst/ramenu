@@ -18,16 +18,10 @@ public class Ingredient {
 
     private Double price;
 
-//    private Integer ingredientId;
-
-//    private Integer ramenOrderId
-
-
     // configures other side of MTM relationship with ramenOrder
     // represents the list of ramenOrder objects that a given ingredient is contained in
     @ManyToMany(mappedBy = "ingredients")
     private List<RamenOrder> ramenOrders;
-
 
     private Ingredient(Integer id, String name, String type, Double price, String description) {
         this();
@@ -65,14 +59,6 @@ public class Ingredient {
         this.type = type;
     }
 
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -81,5 +67,12 @@ public class Ingredient {
         this.description = description;
     }
 
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 
 }

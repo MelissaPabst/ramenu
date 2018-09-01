@@ -39,12 +39,14 @@ public class IngredientController {
     @RequestMapping(value = "", method = RequestMethod.POST)
     public String processOrderForm(@RequestParam int[] brothIds,
                                    @RequestParam int[] noodleIds,
-                                   @RequestParam int[] toppingIds,//array maybe
-                                   @RequestParam float[] total,
+                                   @RequestParam int[] toppingIds,
+                                   @RequestParam float total,
                                    RamenOrder newRamenOrder,
                                    Model model) {
 
         ArrayList<Integer> ingredients = new ArrayList<>();
+
+//        loop through all ids and get ingredient and put into list
 
         for (int brothId : brothIds){ ingredients.add(brothId); }
 
@@ -52,28 +54,31 @@ public class IngredientController {
 
         for (int toppingId : toppingIds){ ingredients.add(toppingId); }
 
-//        newRamenOrder.setIngredients(ingredients.add(item));
+
+
+        //TODO:take list and put into order
+        //newRamenOrder.setIngredients(ingredients);
+        newRamenOrder.setTotal(total);
+
+
+
+//        add order to dao and save
         ramenOrderDao.save(newRamenOrder);
-
-//        ingredientList = loop through all ids and get ingredient and put into list
-        //take list and put into order
-        //add order to dao and save
-
-
-        // put all the id's into ingredient list, be sure to change ramenOrder to hold ingredient list instead of string
-//        for (int brothId : brothIds) {
-//            ramenOrderDao.save(newRamenOrder);
 //
-//        }
-    //ask it to print values c if it does n e thing
+//
+//        newRamenOrder.setIngredients(Ingredient.add(ingredients));
+//        newRamenOrder.addIngredient(ingredients);
+//        newRamenOrder.addTotal(total);
 
+
+        // Print tests
         System.out.println(brothIds[0]);
         System.out.println(noodleIds[0]);
         System.out.println(toppingIds[0]);
-
+        System.out.println(total);
         System.out.println(ingredients);
 
-        //model.addAttribute("ingredients", ingredientDao.findAll());
+       // model.addAttribute("ingredients", RamenOrderDao.findAll());
 
         return "order/ordersummary";
 

@@ -19,12 +19,16 @@ public class RamenOrder {
 
     public RamenOrder() { }
 
-    public  RamenOrder(Float total) {
+    public RamenOrder(Float total) {
         this.total = total;
     }
 
-//    public void addItem(Ingredient item){
-//        ingredients.add(item);
+//    public void addIngredient(Ingredient ingredient){
+//        ingredients.add(ingredient);
+//    }
+//
+//    public void addTotal(Ingredient total) {
+//        ingredients.add(total);
 //    }
 
     public int getId() {
