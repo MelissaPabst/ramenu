@@ -14,7 +14,7 @@
 
 <p>
     <div th:each="ingredient : ${ingredients}" th:if="${ingredient.type == 'broth'}" class="checkbox">
-        <input type="radio" name="brothIds" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
+        <input type="radio" checked="checked" name="brothIds" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
         <label th:for="${ingredient.id}" th:text="${ingredient.name + ' ' + ingredient.description + ' '  +'$'+#numbers.formatDecimal(ingredient.price, 0, 'COMMA', 2, 'POINT')}"></label>
          <br/>
     </div>
@@ -27,7 +27,7 @@
 
 <p>
     <div th:each="ingredient : ${ingredients}" th:if="${ingredient.type == 'noodle'}" class="checkbox">
-        <input type="radio" name="noodleIds" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
+        <input type="radio" checked="checked" name="noodleIds" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
         <label th:for="${ingredient.id}" th:text="${ingredient.name + ' ' + ingredient.description + ' '  +'$'+#numbers.formatDecimal(ingredient.price, 0, 'COMMA', 2, 'POINT')}"></label>
         <br/>
     </div>
@@ -48,14 +48,20 @@
 
 </p>
     <p><label>Total: $ <input type="text" name = "total" class="num" value="42.00" readonly="readyonly" /></label></p>
+    <!--<input type="hidden" name="ramenOrderId" th:value="*{ramenOrder.id}" />-->
     <input type="submit" value="Submit Order" />
 
 </form>
 
+<script>
+var itemPrice = "[[${ingredient.price}]]";
+console.log(itemPrice);
+var total = total;
+</script>
 
 
 
+<!--<script th:src="|${jsLocation}/src/main/resources/static/js/runningtotal.js"></script>-->
 
-<script type="text/javascript" src="/src/main/resources/static/js/runningtotal.js"></script>
 </body>
 </html>

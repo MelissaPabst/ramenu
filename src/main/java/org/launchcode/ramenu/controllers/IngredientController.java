@@ -44,43 +44,43 @@ public class IngredientController {
                                    RamenOrder newRamenOrder,
                                    Model model) {
 
-        ArrayList<Integer> ingredients = new ArrayList<>();
+        ArrayList<Integer> ingredientIds = new ArrayList<>();
 
 //        loop through all ids and get ingredient and put into list
 
-        for (int brothId : brothIds){ ingredients.add(brothId); }
+        for (int brothId : brothIds){ ingredientIds.add(brothId); }
 
-        for (int noodleId : noodleIds){ ingredients.add(noodleId); }
+        for (int noodleId : noodleIds){ ingredientIds.add(noodleId); }
 
-        for (int toppingId : toppingIds){ ingredients.add(toppingId); }
-
+        for (int toppingId : toppingIds){ ingredientIds.add(toppingId); }
 
 
         //TODO:take list and put into order
-        //newRamenOrder.setIngredients(ingredients);
+
+//        for (int ingredientId : ingredientIds) {
+//
+//            Ingredient ingredient = ingredientDao.findOne(ingredientId);
+//            newRamenOrder.setIngredients(ingredientId);
+//
+////            Ingredient ingredient = ingredientDao.findOne(ingredientId);
+////            newRamenOrder.addItem(ingredient);
+//        }
+////        newRamenOrder.setIngredients();
+
         newRamenOrder.setTotal(total);
-
-
 
 //        add order to dao and save
         ramenOrderDao.save(newRamenOrder);
-//
-//
-//        newRamenOrder.setIngredients(Ingredient.add(ingredients));
-//        newRamenOrder.addIngredient(ingredients);
-//        newRamenOrder.addTotal(total);
 
 
-        // Print tests
+//         Print tests
         System.out.println(brothIds[0]);
         System.out.println(noodleIds[0]);
         System.out.println(toppingIds[0]);
         System.out.println(total);
-        System.out.println(ingredients);
+        System.out.println(ingredientIds);
 
-       // model.addAttribute("ingredients", RamenOrderDao.findAll());
-
-        return "order/ordersummary";
+        return "order/ordersummary/" + newRamenOrder.getId();
 
     }
 

@@ -23,13 +23,9 @@ public class RamenOrder {
         this.total = total;
     }
 
-//    public void addIngredient(Ingredient ingredient){
-//        ingredients.add(ingredient);
-//    }
-//
-//    public void addTotal(Ingredient total) {
-//        ingredients.add(total);
-//    }
+    public void addItem(Ingredient item) {
+        ingredients.add(item);
+    }
 
     public int getId() {
         return id;

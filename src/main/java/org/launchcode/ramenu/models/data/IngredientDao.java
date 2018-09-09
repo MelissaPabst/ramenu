@@ -12,7 +12,7 @@ import java.util.List;
 @Transactional
 public interface IngredientDao extends CrudRepository<Ingredient, Integer> {
 
-    //List<Ingredient> findAll();
+    //]List<Ingredient> findAll();
     //add findbyId
 //    List<Ingredient> findById();
 }
