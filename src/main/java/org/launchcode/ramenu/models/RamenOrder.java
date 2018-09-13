@@ -17,6 +17,7 @@ public class RamenOrder {
     @ManyToMany
     List<Ingredient> ingredients;
 
+    //default constructor
     public RamenOrder() { }
 
     public RamenOrder(Float total) {
@@ -24,6 +25,7 @@ public class RamenOrder {
     }
 
     public void addItem(Ingredient item) {
+
         ingredients.add(item);
     }
 
