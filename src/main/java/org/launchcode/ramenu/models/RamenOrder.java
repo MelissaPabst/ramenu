@@ -15,9 +15,8 @@ public class RamenOrder {
     private Float total;
 
     //used to hold all items in the ramenOrder
-    @OneToMany
-    @JoinColumn(name = "ramen_order_id")
-    private List<Ingredient> ingredients = new ArrayList<>();
+    @ManyToMany
+    List<Ingredient> ingredients;
 
     //default constructor
     public RamenOrder() { }

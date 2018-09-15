@@ -20,8 +20,8 @@ public class Ingredient {
 
     // configures other side of MTM relationship with ramenOrder
     // represents the list of ramenOrder objects that a given ingredient is contained in
-    @ManyToOne
-    private RamenOrder ramenOrder;
+    @ManyToMany(mappedBy = "ingredients")
+    private List<RamenOrder> ramenOrders;
 
     private Ingredient(Integer id, String name, String type, Double price, String description) {
         this();
