@@ -69,7 +69,6 @@ public class OrderController {
                                    Model model)
     {
 
-//        System.out.println("ID="+ newRamenOrder.getId());
 //        create list to hold ingredientIds
         List<Integer> ingredientIds = new ArrayList<>();
 
@@ -80,33 +79,31 @@ public class OrderController {
             ingredientIds.add(toppingId);
         }
 
-        System.out.println(ingredientIds);
-
-
 //      take list and put into order
-//        int newRamenOrderId = newRamenOrder.getId();
-//        System.out.println(newRamenOrder.getId());
-//
-//        for (int ingredientId : ingredientIds) {
-//            Ingredient ingredient = ingredientDao.findOne(ingredientId);
-//            ramenOrderDao.findOne(newRamenOrderId);
-//            newRamenOrder.addItem(ingredient);
-//        }
+        int newRamenOrderId = newRamenOrder.getId();
+        System.out.println(newRamenOrder.getId());
+
+        for (int ingredientId : ingredientIds) {
+            Ingredient ingredient = ingredientDao.findOne(ingredientId);
+            ramenOrderDao.findOne(newRamenOrderId);
+            newRamenOrder.addItem(ingredient);
+        }
 
         newRamenOrder.setTotal(total);
 
 //      add order to dao and save
         ramenOrderDao.save(newRamenOrder);
-        System.out.println("ID="+ newRamenOrder.getId());
 
 
 
 //         Print tests
-        System.out.println(brothId);
-        System.out.println(noodleId);
-        System.out.println(toppingIds[0]);
-        System.out.println(total);
-        System.out.println(ingredientIds);
+        System.out.println("ORDER ID="+ newRamenOrder.getId());
+        System.out.println("BROTH ID=" + brothId);
+        System.out.println("NOODLE ID=" + noodleId);
+        System.out.println("TOPPING IDS=" + toppingIds[0]);
+        System.out.println("INGREDIENT IDS=" + ingredientIds);
+        System.out.println("TOTAL=" + total);
+
 
 //        return "order/ordersummary/" + newRamenOrder.getId();
         return "order/ordersummary";

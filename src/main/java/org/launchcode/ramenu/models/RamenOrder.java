@@ -2,6 +2,7 @@ package org.launchcode.ramenu.models;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,8 +15,9 @@ public class RamenOrder {
     private Float total;
 
     //used to hold all items in the ramenOrder
-    @ManyToMany
-    List<Ingredient> ingredients;
+    @OneToMany
+    @JoinColumn(name = "ramen_order_id")
+    private List<Ingredient> ingredients = new ArrayList<>();
 
     //default constructor
     public RamenOrder() { }
