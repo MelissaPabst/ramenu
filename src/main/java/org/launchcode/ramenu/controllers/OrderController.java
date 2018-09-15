@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("order")
+@RequestMapping("ramenu")
 public class OrderController {
 
     @Autowired
@@ -24,6 +24,25 @@ public class OrderController {
     private RamenOrderDao ramenOrderDao;
 
     @RequestMapping(value = "")
+    public String index(Model model) {
+
+        model.addAttribute("title", "Welcome to Ramenu!");
+        return "index";
+    }
+
+    @RequestMapping(value = "login")
+    public String displayLoginForm(Model model) {
+        model.addAttribute("title", "Log In | Ramenu");
+        return "ramenu/user/login";
+    }
+
+    @RequestMapping(value = "signup")
+    public String displaySignupForm(Model model) {
+        model.addAttribute("title", "Sign UP | Ramenu");
+        return "ramenu/user/signup";
+    }
+
+    @RequestMapping(value = "ramenu/order")
     public String displayOrderForm(Model model) {
 
         model.addAttribute("title", "Select Your Ingredients");
@@ -35,19 +54,20 @@ public class OrderController {
         ramenOrderDao.save(newRamenOrder);
         int newRamenOrderId = newRamenOrder.getId();
         System.out.println("ID="+ newRamenOrderId);
-//        return "redirect:order/ingredients/" + newRamenOrderId;
-        return "order/ingredients";
+        return "ramenu/order/ingredients/" + newRamenOrderId;
+//        return "order/ingredients";
 
     }
 //    /ingredients/{newRamenOrderId}
-    @RequestMapping(value = "/ingredients/{newRamenOrderId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/{newRamenOrderId}", method = RequestMethod.POST)
     public String processOrderForm(@PathVariable int newRamenOrderId,
+                                   @ModelAttribute RamenOrder newRamenOrder,
                                    @RequestParam int[] brothIds,
                                    @RequestParam int[] noodleIds,
                                    @RequestParam int[] toppingIds,
                                    @RequestParam float total,
-                                   RamenOrder newRamenOrder,
-                                   Model model) {
+                                   Model model)
+    {
 
 //        System.out.println("ID="+ newRamenOrder.getId());
         List<Integer> ingredientIds = new ArrayList<>();
@@ -71,7 +91,7 @@ public class OrderController {
         newRamenOrder.setTotal(total);
 
 //      add order to dao and save
-//        ramenOrderDao.save(newRamenOrder);
+        ramenOrderDao.save(newRamenOrder);
         System.out.println("ID="+ newRamenOrder.getId());
 
 
