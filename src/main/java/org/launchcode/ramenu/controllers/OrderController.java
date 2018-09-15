@@ -33,16 +33,16 @@ public class OrderController {
     @RequestMapping(value = "login")
     public String displayLoginForm(Model model) {
         model.addAttribute("title", "Log In | Ramenu");
-        return "ramenu/user/login";
+        return "user/login";
     }
 
     @RequestMapping(value = "signup")
     public String displaySignupForm(Model model) {
         model.addAttribute("title", "Sign UP | Ramenu");
-        return "ramenu/user/signup";
+        return "user/signup";
     }
 
-    @RequestMapping(value = "ramenu/order")
+    @RequestMapping(value = "order")
     public String displayOrderForm(Model model) {
 
         model.addAttribute("title", "Select Your Ingredients");
@@ -50,18 +50,18 @@ public class OrderController {
         model.addAttribute("ingredients", ingredientDao.findAll());
 
 //        creates new ramen order and prints ID to verify order is created
-        RamenOrder newRamenOrder = new RamenOrder();
-        ramenOrderDao.save(newRamenOrder);
-        int newRamenOrderId = newRamenOrder.getId();
-        System.out.println("ID="+ newRamenOrderId);
-        return "ramenu/order/ingredients/" + newRamenOrderId;
-//        return "order/ingredients";
+//        RamenOrder newRamenOrder = new RamenOrder();
+//        ramenOrderDao.save(newRamenOrder);
+//        int newRamenOrderId = newRamenOrder.getId();
+//        System.out.println("ID="+ newRamenOrderId);
+//        return "order/ingredients/" + newRamenOrderId;
+        return "order/ingredients";
 
     }
-//    /ingredients/{newRamenOrderId}
-    @RequestMapping(value = "/{newRamenOrderId}", method = RequestMethod.POST)
-    public String processOrderForm(@PathVariable int newRamenOrderId,
-                                   @ModelAttribute RamenOrder newRamenOrder,
+//  ingredients/{newRamenOrderId}
+//  @PathVariable int newRamenOrderId,
+    @RequestMapping(value = "ramenu/order", method = RequestMethod.POST)
+    public String processOrderForm(@ModelAttribute RamenOrder newRamenOrder,
                                    @RequestParam int[] brothIds,
                                    @RequestParam int[] noodleIds,
                                    @RequestParam int[] toppingIds,
@@ -78,10 +78,12 @@ public class OrderController {
         for (int toppingId : toppingIds){ ingredientIds.add(toppingId); }
 
         System.out.println(ingredientIds);
-        System.out.println(newRamenOrder.getId());
 
 
 //      take list and put into order
+        int newRamenOrderId = newRamenOrder.getId();
+        System.out.println(newRamenOrder.getId());
+
         for (int ingredientId : ingredientIds) {
             Ingredient ingredient = ingredientDao.findOne(ingredientId);
             ramenOrderDao.findOne(newRamenOrderId);
