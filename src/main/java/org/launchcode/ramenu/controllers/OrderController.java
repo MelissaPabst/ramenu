@@ -60,35 +60,38 @@ public class OrderController {
     }
 //  ingredients/{newRamenOrderId}
 //  @PathVariable int newRamenOrderId,
-    @RequestMapping(value = "ramenu/order", method = RequestMethod.POST)
+    @RequestMapping(value = "order", method = RequestMethod.POST)
     public String processOrderForm(@ModelAttribute RamenOrder newRamenOrder,
-                                   @RequestParam int[] brothIds,
-                                   @RequestParam int[] noodleIds,
+                                   @RequestParam int brothId,
+                                   @RequestParam int noodleId,
                                    @RequestParam int[] toppingIds,
                                    @RequestParam float total,
                                    Model model)
     {
 
 //        System.out.println("ID="+ newRamenOrder.getId());
+//        create list to hold ingredientIds
         List<Integer> ingredientIds = new ArrayList<>();
 
-//        loop through all ids and get ingredient and put into list
-        for (int brothId : brothIds){ ingredientIds.add(brothId); }
-        for (int noodleId : noodleIds){ ingredientIds.add(noodleId); }
-        for (int toppingId : toppingIds){ ingredientIds.add(toppingId); }
+//        loop through all ids and get ingredient id and put into list
+        ingredientIds.add(brothId);
+        ingredientIds.add(noodleId);
+        for (int toppingId : toppingIds){
+            ingredientIds.add(toppingId);
+        }
 
         System.out.println(ingredientIds);
 
 
 //      take list and put into order
-        int newRamenOrderId = newRamenOrder.getId();
-        System.out.println(newRamenOrder.getId());
-
-        for (int ingredientId : ingredientIds) {
-            Ingredient ingredient = ingredientDao.findOne(ingredientId);
-            ramenOrderDao.findOne(newRamenOrderId);
-            newRamenOrder.addItem(ingredient);
-        }
+//        int newRamenOrderId = newRamenOrder.getId();
+//        System.out.println(newRamenOrder.getId());
+//
+//        for (int ingredientId : ingredientIds) {
+//            Ingredient ingredient = ingredientDao.findOne(ingredientId);
+//            ramenOrderDao.findOne(newRamenOrderId);
+//            newRamenOrder.addItem(ingredient);
+//        }
 
         newRamenOrder.setTotal(total);
 
@@ -99,8 +102,8 @@ public class OrderController {
 
 
 //         Print tests
-        System.out.println(brothIds[0]);
-        System.out.println(noodleIds[0]);
+        System.out.println(brothId);
+        System.out.println(noodleId);
         System.out.println(toppingIds[0]);
         System.out.println(total);
         System.out.println(ingredientIds);
