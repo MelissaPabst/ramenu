@@ -4,6 +4,7 @@ import org.launchcode.ramenu.models.RamenOrder;
 import org.launchcode.ramenu.models.Ingredient;
 import org.launchcode.ramenu.models.data.IngredientDao;
 import org.launchcode.ramenu.models.data.RamenOrderDao;
+//import org.launchcode.ramenu.models.forms.AddIngredientItemForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,7 +59,8 @@ public class OrderController {
         return "order/ingredients";
 
     }
-//  ingredients/{newRamenOrderId}
+
+    //  ingredients/{newRamenOrderId}
 //  @PathVariable int newRamenOrderId,
     @RequestMapping(value = "order", method = RequestMethod.POST)
     public String processOrderForm(@ModelAttribute RamenOrder newRamenOrder,
@@ -66,48 +68,53 @@ public class OrderController {
                                    @RequestParam int noodleId,
                                    @RequestParam int[] toppingIds,
                                    @RequestParam float total,
-                                   Model model)
-    {
+                                   Model model) {
 
 ////        create list to hold ingredientIds
-//        List<Integer> ingredientIds = new ArrayList<>();
-//
+        List<Integer> ingredientIds = new ArrayList<>();
+////
 ////        loop through all ids and get ingredient id and put into list
-//        ingredientIds.add(brothId);
-//        ingredientIds.add(noodleId);
-//        for (int toppingId : toppingIds){
-//            ingredientIds.add(toppingId);
-//        }
-//
-////      take list and put into order
+        ingredientIds.add(brothId);
+        ingredientIds.add(noodleId);
+        for (int toppingId : toppingIds) {
+            ingredientIds.add(toppingId);
+        }
+////
+//////      take list and put into order
 //        int newRamenOrderId = newRamenOrder.getId();
-//        System.out.println(newRamenOrder.getId());
-//
+////        System.out.println(newRamenOrder.getId());
+////
 //        for (int ingredientId : ingredientIds) {
 //            Ingredient ingredient = ingredientDao.findOne(ingredientId);
 //            ramenOrderDao.findOne(newRamenOrderId);
-//            newRamenOrder.addItem(ingredient);
-//        }
+//            newRamenOrder.addItem((ingredient));
+////            newRamenOrder.ingredients.addItem(ingredient);
+////        }
 
 //        RamenOrder newRamenOrder = ramenOrderDao.findOne(newRamenOrderId);
-        newRamenOrder.setTotal(total);
+//        Iterable<Ingredient> ingredients = IngredientDao.findAll();
+//        AddIngredientItemForm form = new AddIngredientItemForm(ingredients, newRamenOrder);
+//        Ingredient ingredient = IngredientDao.findOne(form.getIngredientId());
+//        newRamenOrder.addItem(ingredient);
+
+
+            newRamenOrder.setTotal(total);
 
 //      add order to dao and save
-        ramenOrderDao.save(newRamenOrder);
-
+            ramenOrderDao.save(newRamenOrder);
 
 
 //         Print tests
-        System.out.println("ORDER ID="+ newRamenOrder.getId());
-        System.out.println("BROTH ID=" + brothId);
-        System.out.println("NOODLE ID=" + noodleId);
-        System.out.println("TOPPING IDS=" + toppingIds[0]);
-//        System.out.println("INGREDIENT IDS=" + ingredientIds);
-        System.out.println("TOTAL=" + total);
+            System.out.println("ORDER ID=" + newRamenOrder.getId());
+            System.out.println("BROTH ID=" + brothId);
+            System.out.println("NOODLE ID=" + noodleId);
+            System.out.println("TOPPING IDS=" + toppingIds[0]);
+            System.out.println("INGREDIENT IDS=" + ingredientIds);
+            System.out.println("TOTAL=" + total);
 
 
 //        return "order/ordersummary/" + newRamenOrder.getId();
-        return "order/ordersummary";
-    }
+            return "order/ordersummary";
+        }
 
 }

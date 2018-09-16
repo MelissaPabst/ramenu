@@ -1,6 +1,6 @@
 //package org.launchcode.ramenu.models.forms;
 //
-//import com.sun.istack.internal.NotNull;
+////import com.sun.istack.internal.NotNull;
 //import org.launchcode.ramenu.models.Ingredient;
 //import org.launchcode.ramenu.models.RamenOrder;
 //
@@ -17,10 +17,10 @@
 //        this.ramenOrder = ramenOrder;
 //    }
 //
-//    @NotNull
+////    @NotNull
 //    private int ramenOrderId;
 //
-//    @NotNull
+////    @NotNull
 //    private int ingredientId;
 //
 //    public RamenOrder getRamenOrder() {
