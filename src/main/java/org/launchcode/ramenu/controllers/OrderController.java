@@ -93,4 +93,20 @@ public class OrderController {
         return "order/ordersummary";
     }
 
+    @RequestMapping(value = "order/{newRamenOrderId}", method = RequestMethod.GET)
+    public String viewOrder(Model model, @PathVariable int newRamenOrderId) {
+
+
+        model.addAttribute("title", "Review Order Number: " + newRamenOrderId;
+
+//        RamenOrder newRamenOrder = ramenOrderDao.findOne(newRamenOrderId);
+//
+//        model.addAttribute("newRamenOrderId", newRamenOrder.getId());
+//        model.addAttribute("ingredients", newRamenOrder.getIngredients());
+//        model.addAttribute("total", newRamenOrder.getTotal());
+
+        return "order/ordersummary"+ newRamenOrderId;
+    }
+
 }
+

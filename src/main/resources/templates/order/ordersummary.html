@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+ <head th:replace="fragments :: head">
     <meta charset="UTF-8"/>
     <title></title>
 </head>
 <body>
 
+<h1 th:text="${title}">Edit Ramen Order</h1>
 <p>
 Your Order Summary:
-
-
+    <ul>
+        <li th:each="ingredient : ${ingredients}" th:text="${ingredients.name}"></li>
+    </ul>
+    <p th:text="${total}"></p>
+Is this order correct?
 </p>
+
+
 
 </body>
 </html>
