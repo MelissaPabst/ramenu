@@ -75,15 +75,15 @@ public class OrderController {
 //        take list and put into order
         int newRamenOrderId = newRamenOrder.getId();
 
+//        create list to hold ingredients
         List<Ingredient> ingredients = new ArrayList<>();
 
+//        loop through ingredientIds and add to ingredients
         for (int ingredientId : ingredientIds) {
             Ingredient ingredient = ingredientDao.findOne(ingredientId);
             ingredients.add(ingredient);
         }
-        ramenOrderDao.findOne(newRamenOrderId);
-
-//          findAllById(Iterable<ID> ids)
+        
         newRamenOrder.setIngredients(ingredients);
 
         newRamenOrder.setTotal(total);
