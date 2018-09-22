@@ -15,7 +15,7 @@
     <ul >
         <li th:each="ingredient : ${ingredients}" th:text="${ingredient.name}"></li>
     </ul>
-    <p th:text="${total}"></p>
+    <p th:text="${'$'+#numbers.formatDecimal(total, 0, 'COMMA', 2, 'POINT')}"></p>
 <p>Is this order correct?</p>
 
 <input type="submit" value="Yes! I'd like to pay."/>
