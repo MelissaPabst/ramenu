@@ -94,7 +94,7 @@ public class OrderController {
     }
 
 
-    @RequestMapping(value = "order/{newRamenOrderId}", method = RequestMethod.GET)
+    @RequestMapping(value = "order/ordersummary", method = RequestMethod.GET)
     public String viewOrder(Model model, @PathVariable int newRamenOrderId) {
 
 
