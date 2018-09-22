@@ -13,17 +13,17 @@
 
 <p>Your Order Summary:</p>
     <ul >
-        <li th:each="ingredient : ${ingredients}" th:text="${ingredient.name}"></li>
+        <li th:each="ingredient : ${ingredients}" th:text="${ingredient.name} + ' ' + ${ingredient.type}"></li>
     </ul>
-    <p th:text="${'$'+#numbers.formatDecimal(total, 0, 'COMMA', 2, 'POINT')}"></p>
+    Total: <p th:text="${'$'+#numbers.formatDecimal(total, 0, 'COMMA', 2, 'POINT')}"></p>
 <p>Is this order correct?</p>
 
 
-<form action="http://google.com">
+<form action="/ramenu/pay">
     <input type="hidden" th:value="${newRamenOrder}" name="newRamenOrder" />
     <input type="submit" value="Yes! I'd like to PAY."/>
 </form>
-<form action="http://google.com">
+<form action="/ramenu/edit">
     <input type="hidden" th:value="${newRamenOrder}" name="newRamenOrder" />
     <input type="submit" value="Nope. Let's EDIT this order!"/>
 </form>
