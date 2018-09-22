@@ -94,7 +94,7 @@ public class OrderController {
             BigDecimal ingredientPrice  = ingredient.getPrice();
             total = total.add(ingredientPrice);
         }
-        
+
         newRamenOrder.setTotal(total);
 
         ramenOrderDao.save(newRamenOrder);
