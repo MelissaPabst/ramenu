@@ -13,7 +13,7 @@
 
 <p>Your Order Summary:</p>
     <ul >
-        <li th:each="ingredient : ${ingredients}" th:text="${name}"></li>
+        <li th:each="ingredient : ${ingredients}" th:text="${ingredient.name}"></li>
     </ul>
     <p th:text="${total}"></p>
 <p>Is this order correct?</p>
