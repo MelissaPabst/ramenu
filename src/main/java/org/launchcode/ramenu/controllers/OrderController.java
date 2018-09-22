@@ -94,8 +94,7 @@ public class OrderController {
             BigDecimal ingredientPrice  = ingredient.getPrice();
             total = total.add(ingredientPrice);
         }
-
-//        TODO: change all datatypes to either floats or doubles, rebuild databases
+        
         newRamenOrder.setTotal(total);
 
         ramenOrderDao.save(newRamenOrder);
