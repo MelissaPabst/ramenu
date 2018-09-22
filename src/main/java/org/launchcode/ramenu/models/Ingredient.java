@@ -1,6 +1,7 @@
 package org.launchcode.ramenu.models;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -16,14 +17,14 @@ public class Ingredient {
 
     private String description;
 
-    private Double price;
+    private BigDecimal price;
 
     // configures other side of MTM relationship with ramenOrder
     // represents the list of ramenOrder objects that a given ingredient is contained in
     @ManyToMany(mappedBy = "ingredients")
     private List<RamenOrder> ramenOrders;
 
-    private Ingredient(Integer id, String name, String type, Double price, String description) {
+    private Ingredient(Integer id, String name, String type, BigDecimal price, String description) {
         this();
         this.id = id;
         this.type = type;
@@ -67,11 +68,11 @@ public class Ingredient {
         this.description = description;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

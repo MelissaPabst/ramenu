@@ -2,6 +2,7 @@ package org.launchcode.ramenu.models;
 
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class RamenOrder {
     @GeneratedValue
     private int id;
 
-    private Float total;
+    private BigDecimal total;
 
     //used to hold all items in the ramenOrder
     @ManyToMany
@@ -21,7 +22,7 @@ public class RamenOrder {
     //default constructor
     public RamenOrder() { }
 
-    public RamenOrder(Float total) {
+    public RamenOrder(BigDecimal total) {
         this.total = total;
     }
 
@@ -42,11 +43,11 @@ public class RamenOrder {
         this.ingredients = ingredients;
     }
 
-    public Float getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 
-    public void setTotal(Float total) {
+    public void setTotal(BigDecimal total) {
         this.total = total;
     }
 

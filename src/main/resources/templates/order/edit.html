@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
- <head th:replace="fragments :: head">
+<head th:replace="fragments :: head">
     <meta charset="UTF-8"/>
     <title></title>
 </head>
 <body th:object="${newRamenOrder}">
 
-<h1 th:text="${title}">View Ramen Order</h1>
+<h1 th:text="${title}">Edit Ramen Order</h1>
 
-<p th:unless="${ingredients} and ${ingredients.size()}">Order Empty. Please call to place your order.</p>
+
 
 
 <p>Your Order Summary:</p>
-    <ul >
-        <li th:each="ingredient : ${ingredients}" th:text="${ingredient.name} + ' ' + ${ingredient.type}"></li>
-    </ul>
-    Total: <p th:text="${'$'+#numbers.formatDecimal(total, 0, 'COMMA', 2, 'POINT')}"></p>
+<ul >
+    <li th:each="ingredient : ${ingredients}" th:text="${ingredient.name} + ' ' + ${ingredient.type}"></li>
+</ul>
+Total: <p th:text="${'$'+#numbers.formatDecimal(total, 0, 'COMMA', 2, 'POINT')}"></p>
 <p>Is this order correct?</p>
 
 

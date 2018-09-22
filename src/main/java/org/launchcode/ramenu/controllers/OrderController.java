@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +60,7 @@ public class OrderController {
                                    @RequestParam int brothId,
                                    @RequestParam int noodleId,
                                    @RequestParam int[] toppingIds,
-                                   @RequestParam float total,
+//                                   @RequestParam BigDecimal total,
                                    Model model) {
 
 //        create list to hold ingredientIds
@@ -86,6 +87,15 @@ public class OrderController {
         
         newRamenOrder.setIngredients(ingredients);
 
+        BigDecimal total = new BigDecimal(0);
+
+        for (int ingredientId : ingredientIds) {
+            Ingredient ingredient = ingredientDao.findOne(ingredientId);
+            BigDecimal ingredientPrice  = ingredient.getPrice();
+            total = total.add(ingredientPrice);
+        }
+
+//        TODO: change all datatypes to either floats or doubles, rebuild databases
         newRamenOrder.setTotal(total);
 
         ramenOrderDao.save(newRamenOrder);
@@ -98,9 +108,16 @@ public class OrderController {
         return "order/ordersummary";
     }
 
-//    @RequestMapping(value = "edit", method = RequestMethod.POST)
-//    public String payForOrder(@ModelAttribute RamenOrder newRamenOrder,
+//    @RequestMapping(value = "edit", method = RequestMethod.GET)
+//    public String displayEditOrder(@ModelAttribute RamenOrder newRamenOrder,
 //                              Model model) {
+//
+//        model.addAttribute("newRamenOrder", newRamenOrder);
+//        model.addAttribute("ingredients", ingredientDao.findAll());
+//        model.addAttribute("title", "Edit Order");
+//
+//        return "order/edit";
+//
 //    }
 
 //    @RequestMapping(value = "pay", method = RequestMethod.GET)
