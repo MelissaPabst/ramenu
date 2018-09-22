@@ -4,18 +4,18 @@
     <meta charset="UTF-8"/>
     <title></title>
 </head>
-<body>
+<body th:object="${newRamenOrder}">
 
 <h1 th:text="${title}">Edit Ramen Order</h1>
-<p>
-Your Order Summary:
-    <ul>
-        <li th:each="ingredient : ${ingredients}" th:text="${ingredients.name}"></li>
+
+<!--<p th:unless="${newRamenOrder.ingredients} and ${newRamenOrder.ingredients.size()}">Order Empty. Please call to place your order.</p>-->
+
+<p>Your Order Summary:</p>
+    <ul >
+        <li th:each="ingredient : ${ingredients}" th:text="${newRamenOrder.ingredients.name}"></li>
     </ul>
     <p th:text="${total}"></p>
-Is this order correct?
-</p>
-
+<p>Is this order correct?</p>
 
 
 </body>

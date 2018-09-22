@@ -8,7 +8,7 @@
 
 
 
-<form action="#" method="post" class="form" id="form" th:object="${form}">
+<form method="post" class="form"  th:object="${newRamenOrder}">
 <h2>Step 1: Choose Your Broth</h2>
 
 
@@ -48,7 +48,8 @@
 
 </p>
     <p><label>Total: $ <input type="text" name = "total" class="num" value="5.00" readonly="readyonly" /></label></p>
-    <!--<input type="hidden" name="newRamenOrderId" th:value="*{RamenOrder.id}" />-->
+
+    <!--<input type="hidden" th:value="${newRamenOrder}" name="newRamenOrder" />-->
     <input type="submit" value="Submit Order" />
 
 
