@@ -90,24 +90,30 @@ public class OrderController {
 
         ramenOrderDao.save(newRamenOrder);
 
+        model.addAttribute("title", "Review Order Number: " + newRamenOrder.getId());
+        model.addAttribute("newRamenOrderId", newRamenOrder.getId());
+        model.addAttribute("ingredients", newRamenOrder.getIngredients());
+        model.addAttribute("total", newRamenOrder.getTotal());
+//        model.addAttribute("name", newRamenOrder.ingredients.;
+
         return "order/ordersummary";
     }
 
 
-    @RequestMapping(value = "order/{newRamenOrderId}", method = RequestMethod.GET)
-    public String viewOrder(Model model, @PathVariable int newRamenOrderId) {
-
-
-        RamenOrder newRamenOrder = ramenOrderDao.findOne(newRamenOrderId);
-
-        model.addAttribute("title", "Review Order Number: " + newRamenOrder.getId());
-
-        model.addAttribute("newRamenOrderId", newRamenOrder.getId());
-        model.addAttribute("ingredients", newRamenOrder.getIngredients());
-        model.addAttribute("total", newRamenOrder.getTotal());
-
-        return "order/ordersummary" + newRamenOrderId;
-    }
+//    @RequestMapping(value = "ordersummary", method = RequestMethod.GET)
+//    public String viewOrder(Model model, @RequestParam RamenOrder newRamenOrder, @PathVariable int newRamenOrderId) {
+//
+//
+////        RamenOrder newRamenOrder = ramenOrderDao.findOne(newRamenOrderId);
+//
+//        model.addAttribute("title", "Review Order Number: " + newRamenOrder.getId());
+//
+//        model.addAttribute("newRamenOrderId", newRamenOrder.getId());
+//        model.addAttribute("ingredients", newRamenOrder.getIngredients());
+//        model.addAttribute("total", newRamenOrder.getTotal());
+//
+//        return "order/ordersummary" + newRamenOrderId;
+//    }
 
 }
 

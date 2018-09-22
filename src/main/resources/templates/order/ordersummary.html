@@ -8,11 +8,12 @@
 
 <h1 th:text="${title}">Edit Ramen Order</h1>
 
-<!--<p th:unless="${newRamenOrder.ingredients} and ${newRamenOrder.ingredients.size()}">Order Empty. Please call to place your order.</p>-->
+<p th:unless="${ingredients} and ${ingredients.size()}">Order Empty. Please call to place your order.</p>
+
 
 <p>Your Order Summary:</p>
     <ul >
-        <li th:each="ingredient : ${ingredients}" th:text="${newRamenOrder.ingredients.name}"></li>
+        <li th:each="ingredient : ${ingredients}" th:text="${name}"></li>
     </ul>
     <p th:text="${total}"></p>
 <p>Is this order correct?</p>
