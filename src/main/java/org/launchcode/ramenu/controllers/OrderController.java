@@ -100,10 +100,6 @@ public class OrderController {
 
     @RequestMapping(value = "pay", method = RequestMethod.GET)
     public String payForOrder(@ModelAttribute RamenOrder newRamenOrder,
-                                   @RequestParam int brothId,
-                                   @RequestParam int noodleId,
-                                   @RequestParam int[] toppingIds,
-                                   @RequestParam float total,
                                    Model model) {
     {
 
