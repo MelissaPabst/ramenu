@@ -98,12 +98,17 @@ public class OrderController {
         return "order/ordersummary";
     }
 
-    @RequestMapping(value = "pay", method = RequestMethod.GET)
-    public String payForOrder(@ModelAttribute RamenOrder newRamenOrder,
-                                   Model model) {
-    {
+//    @RequestMapping(value = "edit", method = RequestMethod.POST)
+//    public String payForOrder(@ModelAttribute RamenOrder newRamenOrder,
+//                              Model model) {
+//    }
 
-    }
+//    @RequestMapping(value = "pay", method = RequestMethod.GET)
+//    public String payForOrder(@ModelAttribute RamenOrder newRamenOrder,
+//                                   Model model) {
+//    }
+
+
+
 
 }
-
