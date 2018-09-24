@@ -4,29 +4,51 @@
     <meta charset="UTF-8"/>
     <title></title>
 </head>
-<body th:object="${newRamenOrder}">
+<body>
 
 <h1 th:text="${title}">Edit Ramen Order</h1>
 
 
+<form method="post" class="form" th:object="${newRamenOrder}">
+    <h2>Step 1: Edit Your Broth</h2>
+
+    <p>
+    <div th:each="ingredient : ${ingredients}" th:if="${ingredient.type == 'broth'}" class="checkbox">
+        <input type="radio" checked="checked" name="brothId" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
+        <label th:for="${ingredient.id}" th:text="${ingredient.name + ' ' + ingredient.description + ' '  +'$'+#numbers.formatDecimal(ingredient.price, 0, 'COMMA', 2, 'POINT')}"></label>
+        <br/>
+    </div>
+    </p>
+
+    <h2>Step 2: Edit Your Noodle</h2>
+
+    <p>
+    <div th:each="ingredient : ${ingredients}" th:if="${ingredient.type == 'noodle'}" class="checkbox">
+        <input type="radio" checked="checked" name="noodleId" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
+        <label th:for="${ingredient.id}" th:text="${ingredient.name + ' ' + ingredient.description + ' '  +'$'+#numbers.formatDecimal(ingredient.price, 0, 'COMMA', 2, 'POINT')}"></label>
+        <br/>
+    </div>
+
+    </p>
+
+    <h2>Step 3: Edit Your Toppings</h2>
+
+    <p>
+    <div th:each="ingredient : ${ingredients}" th:if="${ingredient.type == 'topping'}" class="checkbox">
+        <input type="checkbox" name="toppingIds" th:value="${ingredient.id}" th:id="${ingredient.id}"/>
+        <label th:for="${ingredient.id}" th:text="${ingredient.name + ' ' + ingredient.description + ' '  +'$'+#numbers.formatDecimal(ingredient.price, 0, 'COMMA', 2, 'POINT')}"></label>
+        <br/>
+    </div>
+
+    </p>
 
 
-<p>Your Order Summary:</p>
-<ul >
-    <li th:each="ingredient : ${ingredients}" th:text="${ingredient.name} + ' ' + ${ingredient.type}"></li>
-</ul>
-Total: <p th:text="${'$'+#numbers.formatDecimal(total, 0, 'COMMA', 2, 'POINT')}"></p>
-<p>Is this order correct?</p>
-
-
-<form action="/ramenu/pay">
     <input type="hidden" th:value="${newRamenOrder}" name="newRamenOrder" />
-    <input type="submit" value="Yes! I'd like to PAY."/>
+    <input type="submit" value="Edit Order" />
+
+
 </form>
-<form action="/ramenu/edit">
-    <input type="hidden" th:value="${newRamenOrder}" name="newRamenOrder" />
-    <input type="submit" value="Nope. Let's EDIT this order!"/>
-</form>
+
 
 </body>
 </html>
