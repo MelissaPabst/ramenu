@@ -54,7 +54,7 @@ public class OrderController {
         return "order/ingredients";
 
     }
-    
+
     @RequestMapping(value = "order", method = RequestMethod.POST)
     public String processOrderForm(@ModelAttribute RamenOrder newRamenOrder,
                                    @RequestParam int brothId,
@@ -74,7 +74,7 @@ public class OrderController {
         }
 
 //        take list and put into order
-        int newRamenOrderId = newRamenOrder.getId();
+//        int newRamenOrderId = newRamenOrder.getId();
 
 //        create list to hold ingredients
         List<Ingredient> ingredients = new ArrayList<>();
@@ -84,7 +84,7 @@ public class OrderController {
             Ingredient ingredient = ingredientDao.findOne(ingredientId);
             ingredients.add(ingredient);
         }
-        
+
         newRamenOrder.setIngredients(ingredients);
 
         BigDecimal total = new BigDecimal(0);
@@ -107,22 +107,76 @@ public class OrderController {
         return "order/ordersummary";
     }
 
-//    @RequestMapping(value = "edit", method = RequestMethod.GET)
-//    public String displayEditOrder(@ModelAttribute RamenOrder newRamenOrder,
-//                              Model model) {
-//
-//        model.addAttribute("newRamenOrder", newRamenOrder);
-//        model.addAttribute("ingredients", ingredientDao.findAll());
-//        model.addAttribute("title", "Edit Order");
-//
-//        return "order/edit";
-//
-//    }
+    @RequestMapping(value = "edit", method = RequestMethod.GET)
+    public String displayEditOrder(Model model,
+                                   @RequestParam int newRamenOrderId) {
 
-//    @RequestMapping(value = "pay", method = RequestMethod.GET)
-//    public String payForOrder(@ModelAttribute RamenOrder newRamenOrder,
-//                                   Model model) {
-//    }
+        RamenOrder newRamenOrder = ramenOrderDao.findOne(newRamenOrderId);
+
+        model.addAttribute("newRamenOrder", newRamenOrder);
+        model.addAttribute("ingredients", ingredientDao.findAll());
+        model.addAttribute("newRamenOrderId", newRamenOrder.getId());
+        model.addAttribute("title", "Edit Order Number: " + newRamenOrder.getId());
+
+        return "order/edit";
+
+    }
+
+    @RequestMapping(value = "edit", method = RequestMethod.POST)
+    public String processEditOrder(Model model,
+//                                   @ModelAttribute RamenOrder newRamenOrder,
+//                                   @RequestParam RamenOrder newRamenOrder,
+                                   @RequestParam int newRamenOrderId,
+                                   @RequestParam int brothId,
+                                   @RequestParam int noodleId,
+                                   @RequestParam int[] toppingIds) {
+
+
+        RamenOrder newRamenOrder = ramenOrderDao.findOne(newRamenOrderId);
+
+//        create list to hold ingredientIds
+        List<Integer> ingredientIds = new ArrayList<>();
+
+//        loop through all ids and get ingredient id and put into list
+        ingredientIds.add(brothId);
+        ingredientIds.add(noodleId);
+        for (int toppingId : toppingIds) {
+            ingredientIds.add(toppingId);
+        }
+
+//        take list and put into order
+//        create list to hold ingredients
+        List<Ingredient> ingredients = new ArrayList<>();
+
+//        loop through ingredientIds and add to ingredients
+        for (int ingredientId : ingredientIds) {
+            Ingredient ingredient = ingredientDao.findOne(ingredientId);
+            ingredients.add(ingredient);
+        }
+
+        newRamenOrder.setIngredients(ingredients);
+
+        BigDecimal total = new BigDecimal(0);
+
+        for (int ingredientId : ingredientIds) {
+            Ingredient ingredient = ingredientDao.findOne(ingredientId);
+            BigDecimal ingredientPrice  = ingredient.getPrice();
+            total = total.add(ingredientPrice);
+        }
+
+        newRamenOrder.setTotal(total);
+
+        ramenOrderDao.save(newRamenOrder);
+
+        model.addAttribute("title", "Review Order Number: " + newRamenOrder.getId());
+        model.addAttribute("newRamenOrderId", newRamenOrder.getId());
+        model.addAttribute("ingredients", newRamenOrder.getIngredients());
+        model.addAttribute("total", newRamenOrder.getTotal());
+
+        return "order/ordersummary";
+    }
+
+
 
 
 
